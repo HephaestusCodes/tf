@@ -32,9 +32,9 @@ resource "github_branch_protection" "tf" {
     repository  = github_repository.tf.name
     branch      = "main" # branch = "release-*" nifty feature
 
-    enforce_admins = true
+    enforce_admins = false
 
-    require_signed_commits = true
+    require_signed_commits = false
 
     # required_pull_request_reviews {
     #     dismiss_stale_reviews = true

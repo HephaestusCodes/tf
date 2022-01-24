@@ -27,7 +27,7 @@ resource "github_repository" "tf" {
     # to rename a repo, edit in the browser then run: terraform state rm github_repository.monitoring-app
     # then terraform import github_repository.monitoring-app monitoring-app
 }
-
+# A lot of this doesn't work very well with one user :D
 resource "github_branch_protection" "tf" {
     repository  = github_repository.tf.name
     branch      = "main" # branch = "release-*" nifty feature
@@ -36,11 +36,11 @@ resource "github_branch_protection" "tf" {
 
     require_signed_commits = true
 
-    required_pull_request_reviews {
-        dismiss_stale_reviews = true
-        dismissal_teams = ["reviewers"]
-        required_approving_review_count = ceil((length(var.reviewers_team)/2))
-    }
+    # required_pull_request_reviews {
+    #     dismiss_stale_reviews = true
+    #     dismissal_teams = ["reviewers"]
+    #     required_approving_review_count = ceil((length(var.reviewers_team)/2))
+    # }
 }
 
 # resource "github_team_repository" "monitoring-app" {
